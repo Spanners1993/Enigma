@@ -1,0 +1,30 @@
+THIS WORKS:
+for letter in l:
+        newLetter = rotor_1.get(letter)
+        newList.append(newLetter)
+
+THIS WON'T WORK:
+for letter in l:
+        letter = rotor_1.get(letter)
+
+BECAUSE:
+Think about iterating through the for loop on the non-working one. letter and newLetter need to be a seperate variable!
+LESSON:
+Don't piss around with the thing you are iterating through in the for loop.
+
+
+== and = are different:
+= assigns a value to a variable
+== this checks whether two expressions give the same value
+
+
+You have to declare variables as global INSIDE functions. wtf
+
+
+To make decryption easier: Need to add a reflector rotor!
+PROBLEM: How am I going to write the code for putting signals back through the rotor?
+POTENTIAL SOLUTION: Write new dictonaries with backwards rotors
+
+LESSON:
+Doing repetitive tasks manually can lead to mistakes.
+I accidentally overwrote one of my rotor dictionaries with another rotor dictionary! Had to go through step by step to find.
