@@ -9,7 +9,10 @@
 from rotors import rotorPosition, rotor_1, rotor_2, rotor_3, reflector, rotor_1_b, rotor_2_b, rotor_3_b
 # NOTE:  The rotorPosition variable will change as this file runs. The new rotor position will not be saved to the rotors module. 
 
-letterCounter = 0
+
+
+
+
 newList = []
 
 def access_text_file():
@@ -41,30 +44,8 @@ def increment_rotor_position():
             rotorPosition["rotor1"] = rotorPosition["rotor1"]+1
             if rotorPosition["rotor1"] == 26:
                 rotorPosition["rotor1"] = 0
+
     
-
-def write_rotor_position_to_rotors_file():
-    #this doesn't work yet
-    #It probably doesn't need to work
-    with open("rotors.py", "a") as r:
-        r.write(rotorPosition)
-
-
-def get_letter():
-    #This function gets the next letter from the message
-    #When all the letters have been selected, the message will be written (This DOESN'T WORK YET)
-    
-    global letter
-    global letterCounter
-    l = list(message)
-    messageLength = len(l)
-    letter = l[letterCounter]
-    letterCounter = letterCounter + 1
-    if letterCounter == messageLength + 1:
-        write_message() 
-    return letter
-     
-
 def encode_letter_forwards():
     #This has to run the letter in question through the rotors to get a new letter
     #Change the letter into an initial number
@@ -93,7 +74,6 @@ def reflect_letter():
     #Runs the letter through the reflector
     global reflectedLetter
     reflectedLetter = reflector.get(newLetterCharacter)
-    print("This is the reflected letter", reflectedLetter)
 
 
 def encode_letter_backwards():
@@ -113,7 +93,6 @@ def encode_letter_backwards():
     
     newLetterCharacter = chr(newLetter + 97)
     newList.append(newLetterCharacter)
-    print("This is the encrypted letter:", newLetterCharacter)
 
 def rationalise_newLetter(newLetter):
     if newLetter > 25:
@@ -133,15 +112,27 @@ def write_message():
         f.truncate(0)
         f.write(newList)
     print("encoded file written")
+    print(newList)
     
 
-access_text_file()
-get_letter()
-encode_letter_forwards()
-reflect_letter()
-encode_letter_backwards()
-#increment_rotor_position()
-write_message()
+def run():
+    #This function runs the file when called
+    
+    access_text_file()
+
+    global letter
+    l = list(message)
+    
+    for letter in l:
+        encode_letter_forwards()
+        reflect_letter()
+        encode_letter_backwards()
+        increment_rotor_position()
+
+    write_message()
+
+
+run()
 
 
 
