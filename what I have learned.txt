@@ -30,3 +30,6 @@ Doing repetitive tasks manually can lead to mistakes.
 I accidentally overwrote one of my rotor dictionaries with another rotor dictionary! Had to go through step by step to find.
 Next time: Write code to create dictionaries! 
 Also: Is there a way to reverse dictionaries- could be useful.
+
+PROBLEM:
+Machine is working. but going wrong occasionally for some letters.

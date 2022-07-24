@@ -50,7 +50,7 @@ def encode_letter_forwards():
     #This has to run the letter in question through the rotors to get a new letter
     #Change the letter into an initial number
     #Run through first rotor (use dictionary)
-    #Get correct corresponding second rotor value
+    #Get correct corresponding second rotor starting value
     #Run through second rotor etc.
     #Change number back into a letter
     #NOTE - ord() makes a = 97- it uses ASCII (https://www.asciitable.com/)
@@ -77,7 +77,7 @@ def reflect_letter():
 
 
 def encode_letter_backwards():
-    #This function runs the letter through rotors backwards after being reflected
+    #This function runs the letter through rotors backwards
 
     letterNumber = ord(reflectedLetter) - 97
 
@@ -95,10 +95,11 @@ def encode_letter_backwards():
     newList.append(newLetterCharacter)
 
 def rationalise_newLetter(newLetter):
+    #Must be 26, not 25 to account for the fact that a = 0, not 1
     if newLetter > 25:
-        newLetter = newLetter - 25
+        newLetter = newLetter - 26
     if newLetter < 0:
-        newLetter = newLetter + 25
+        newLetter = newLetter + 26
     return newLetter
 
 
