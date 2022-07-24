@@ -2,9 +2,9 @@
 
 rotorPosition = { 
 
-    "rotor1" : 0,
-    "rotor2" : 0,
-    "rotor3" : 0
+    "rotor1" : 24,
+    "rotor2" : 4,
+    "rotor3" : 17
 
 }
 

@@ -77,13 +77,13 @@ def encode_letter_forwards():
     letterNumber = ord(letter) - 97 
 
     newLetter = rotor_1.get(letterNumber)
-    #rotorPosDif = rotorPosition.get("rotor2") - rotorPosition.get("rotor1")
-    #newLetter = newLetter + rotorPosDif
-    #newLetter = rationalise_newLetter(newLetter)
+    rotorPosDif = rotorPosition.get("rotor2") - rotorPosition.get("rotor1")
+    newLetter = newLetter + rotorPosDif
+    newLetter = rationalise_newLetter(newLetter)
     newLetter = rotor_2.get(newLetter)
-    #rotorPosDif = rotorPosition.get("rotor3") - rotorPosition.get("rotor2")
-    #newLetter = newLetter + rotorPosDif
-    #newLetter = rationalise_newLetter(newLetter)
+    rotorPosDif = rotorPosition.get("rotor3") - rotorPosition.get("rotor2")
+    newLetter = newLetter + rotorPosDif
+    newLetter = rationalise_newLetter(newLetter)
     newLetter = rotor_3.get(newLetter) 
     
     global newLetterCharacter
@@ -97,20 +97,18 @@ def reflect_letter():
 
 
 def encode_letter_backwards():
-    #This function runs the letter through rotors backwards after being reflected)
-    #WILL ROTORPOSDIF BIT WORK??
-    #NEED TO UPDATE TO COPY encode_letter_forwards():
+    #This function runs the letter through rotors backwards after being reflected
 
     letterNumber = ord(reflectedLetter) - 97
 
     newLetter = rotor_3_b.get(letterNumber)
-    #rotorPosDif = rotorPosition.get("rotor2") - rotorPosition.get("rotor1") #CHANGE THESE SECTIONS- EQUIVALENT TO FIRST PART ATM
-    #newLetter = newLetter + rotorPosDif
-    #newLetter = rationalise_newLetter(newLetter)
+    rotorPosDif = rotorPosition.get("rotor2") - rotorPosition.get("rotor3") 
+    newLetter = newLetter + rotorPosDif
+    newLetter = rationalise_newLetter(newLetter)
     newLetter = rotor_2_b.get(newLetter)
-    #rotorPosDif = rotorPosition.get("rotor3") - rotorPosition.get("rotor2")
-    #newLetter = newLetter + rotorPosDif
-    #newLetter = rationalise_newLetter(newLetter)
+    rotorPosDif = rotorPosition.get("rotor1") - rotorPosition.get("rotor2")
+    newLetter = newLetter + rotorPosDif
+    newLetter = rationalise_newLetter(newLetter)
     newLetter = rotor_1_b.get(newLetter) 
     
     newLetterCharacter = chr(newLetter + 97)
@@ -141,7 +139,6 @@ access_text_file()
 get_letter()
 encode_letter_forwards()
 reflect_letter()
-#reflect_letter_b()
 encode_letter_backwards()
 #increment_rotor_position()
 write_message()
