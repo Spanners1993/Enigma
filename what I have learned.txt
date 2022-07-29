@@ -33,3 +33,8 @@ Also: Is there a way to reverse dictionaries- could be useful.
 
 PROBLEM:
 Machine is working. but going wrong occasionally for some letters.
+SOLUTION:
+rationalise_newLetter() was not working as intended. 
+The alphabet has 26 characters- I was subracting 25, not 26 when the newLetter >25.
+This meant the letter changed one forward each time the rationalise_newLetter function was run.
+a-->b, b-->c etc... 
