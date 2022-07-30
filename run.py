@@ -1,16 +1,13 @@
-# This file will take a message, run it through the rotors/reflector and make it into gobbledegook.
+# This file will take a message/encrypted message, run it through the rotors/reflector and make it into encrypted message/message.
 # Will have to:
 # 1) Get message
 # 2) Run one letter through rotor/reflector encryption
 # 3) Increment rotor position
 # 3) Repeat steps 2 + 3 until message is fully encrypted
-# 4) Write message to text file (this could be happening continuously whilst each letter is encrypted)
+# 4) Write message to text file.
 
 from rotors import rotorPosition, rotor_1, rotor_2, rotor_3, reflector, rotor_1_b, rotor_2_b, rotor_3_b
 # NOTE:  The rotorPosition variable will change as this file runs. The new rotor position will not be saved to the rotors module. 
-
-
-
 
 
 newList = []
@@ -20,6 +17,7 @@ def access_text_file():
     #creates a file object (f)
     #reads the file object
     #creates the global "message" variable using the file object
+    #uses 'with' because this ensures file is shut when we are done with it
     global message
     with open('write_message_here.txt', 'r', encoding="utf-8") as f:
         print("message imported")
@@ -27,7 +25,6 @@ def access_text_file():
         message = f.read()
         print(message)
     
-
 def increment_rotor_position():
     #Each time a letter is encrypted, the rotor position increments.
     #Rotor 3 increases by 1 every time the rotor position increments.
@@ -95,7 +92,8 @@ def encode_letter_backwards():
     newList.append(newLetterCharacter)
 
 def rationalise_newLetter(newLetter):
-    #Must be 26, not 25 to account for the fact that a = 0, not 1
+    #a=0, b=1 etc. This ensures the addition/subraction operations taking place in the encode_xxx functions
+    #can't lead to a number >25 or <0 being passed back into the rotors
     if newLetter > 25:
         newLetter = newLetter - 26
     if newLetter < 0:
@@ -117,7 +115,7 @@ def write_message():
     
 
 def run():
-    #This function runs the file when called
+    #This function runs the file when called. Cycles through each letter in message.
     
     access_text_file()
 

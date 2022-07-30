@@ -1,12 +1,39 @@
-#THERE IS PROBABLY A MISTAKE IN THE ROTOR_1, ROTOR_2, ROTOR_3 DICTIONARIES SOMEWHERE! CHECK AT LATER DATE
+#Contains the rotor and rotor position information
 
 rotorPosition = { 
 
     "rotor1" : 12,
     "rotor2" : 7,
     "rotor3" : 9
-
 }
+
+class rotors:
+    def __init__(self, wiring):
+        self.wiring = wiring
+        self.convert_to_dictionary(wiring)
+        self.reverse_dictionary()
+        
+    def convert_to_dictionary(self, wiring):
+        newList = []
+        numbers = list(range(25))
+        letters = list(wiring)
+        for eachLetter in letters:
+            newNumber = ord(eachLetter) - 65 
+            newList.append(newNumber)
+        letters = newList
+        dictionary = list(zip(numbers, letters))
+        self.wiring = dict(dictionary)
+        return self.wiring
+
+    def reverse_dictionary():
+        #This function needs to take the dictionary created above and reverse it
+        pass
+        
+rotor_one = rotors('DMTWSILRUYQNKFEJCAZBPGXOHV')
+rotor_two = rotors('XXX')
+
+print(rotor_one.wiring)
+
 
 rotor_1 = {
 
