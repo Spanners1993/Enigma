@@ -6,7 +6,7 @@
 # 3) Repeat steps 2 + 3 until message is fully encrypted
 # 4) Write message to text file.
 
-from rotors import rotorPosition, rotor_1, rotor_2, rotor_3, reflector, rotor_1_b, rotor_2_b, rotor_3_b
+from rotors import rotorPosition, reflector, rotor_one, rotor_two, rotor_three
 # NOTE:  The rotorPosition variable will change as this file runs. The new rotor position will not be saved to the rotors module. 
 
 
@@ -54,15 +54,15 @@ def encode_letter_forwards():
     
     letterNumber = ord(letter) - 97 
 
-    newLetter = rotor_1.get(letterNumber)
+    newLetter = rotor_one.wiring.get(letterNumber)
     rotorPosDif = rotorPosition.get("rotor2") - rotorPosition.get("rotor1")
     newLetter = newLetter + rotorPosDif
     newLetter = rationalise_newLetter(newLetter)
-    newLetter = rotor_2.get(newLetter)
+    newLetter = rotor_two.wiring.get(newLetter)
     rotorPosDif = rotorPosition.get("rotor3") - rotorPosition.get("rotor2")
     newLetter = newLetter + rotorPosDif
     newLetter = rationalise_newLetter(newLetter)
-    newLetter = rotor_3.get(newLetter) 
+    newLetter = rotor_three.wiring.get(newLetter) 
     
     global newLetterCharacter
     newLetterCharacter = chr(newLetter + 97)
@@ -78,15 +78,15 @@ def encode_letter_backwards():
 
     letterNumber = ord(reflectedLetter) - 97
 
-    newLetter = rotor_3_b.get(letterNumber)
+    newLetter = rotor_three.reverse_wiring.get(letterNumber)
     rotorPosDif = rotorPosition.get("rotor2") - rotorPosition.get("rotor3") 
     newLetter = newLetter + rotorPosDif
     newLetter = rationalise_newLetter(newLetter)
-    newLetter = rotor_2_b.get(newLetter)
+    newLetter = rotor_two.reverse_wiring.get(newLetter)
     rotorPosDif = rotorPosition.get("rotor1") - rotorPosition.get("rotor2")
     newLetter = newLetter + rotorPosDif
     newLetter = rationalise_newLetter(newLetter)
-    newLetter = rotor_1_b.get(newLetter) 
+    newLetter = rotor_one.reverse_wiring.get(newLetter) 
     
     newLetterCharacter = chr(newLetter + 97)
     newList.append(newLetterCharacter)
